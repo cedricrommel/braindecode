@@ -10,7 +10,7 @@ from skorch.helper import to_tensor
 from torch import optim
 
 from braindecode.augmentation import AugmentedDataLoader
-from braindecode.augmentation import TimeReverse
+from braindecode.augmentation.base import IdentityTransform
 from braindecode.classifier import EEGClassifier
 
 
@@ -52,5 +52,5 @@ def augmented_mock_clf():
         optimizer=optim.Adam,
         batch_size=32,
         iterator_train=AugmentedDataLoader,
-        iterator_train__transforms=TimeReverse(probability=0.5),
+        iterator_train__transforms=IdentityTransform
     )
